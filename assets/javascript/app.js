@@ -98,21 +98,28 @@ database.ref().on("child_added", function (childSnapshot) {
 
     // remove button
     var removeButton = '<button type="submit" class="btn btn-secondary" id="remove-button" data-key="' + key + '"><i class="fas fa-trash-alt"></i></button>'
-
+    
+    // generate new train information
     var newtr = $("<tr>").append(
         $("<td>").text(trainNamefire),
         $("<td>").text(trainDestifire),
         $("<td>").text(trainFreqfire + "-MIN"),
         $("<td>").text(trainArrivalTime),
         $("<td>").text(trainNextMins + " mins"),
-        $("<td>").html(removeButton)
+        $("<td>").html(removeButton),
     );
+    // append new train information to table
     $(".table-body").append(newtr)
+})
 
-    $(document).on("click", "#remove-button", function () {
+$(document).on("click", "#remove-button", function () {
+    var trainConfirm = prompt("Please enter the PIN to remove the train:")
+    if (trainConfirm === "isaac") {
+
         database.ref().child($(this).attr("data-key")).remove();
         $(this).parentsUntil("tbody").remove();
-        // $(this).parent().parent().remove();
-        // $(this).closest ("tr").remove();
-    })
+        alert("The train has been removed.");
+    } else {
+        alert("Sorry, wrong password.");
+    }
 })
