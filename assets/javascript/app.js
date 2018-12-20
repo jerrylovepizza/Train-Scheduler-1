@@ -33,25 +33,34 @@ $("#submit-button").on("click", function () {
 
     if ($("#train-name").val().trim().length > 0 &&
         $("#train-desti").val().trim().length > 0 &&
-        $("#train-hour").val().trim().length > 0 &&
-        $("#train-min").val().trim().length > 0 &&
         $("#train-freq").val().trim().length > 0) {
 
-        var trainName = $("#train-name").val().trim();
-        var trainDesti = $("#train-desti").val().trim();
-        var trainFreq = $("#train-freq").val().trim();
-        var trainStart = $("#train-hour").val().trim() + ":" + $("#train-min").val().trim() + " " + $("#train-ampm").val();
+        if (parseInt($("#train-hour").val()) >= 0 &&
+            parseInt($("#train-hour").val()) < 13 &&
+            parseInt($("#train-min").val()) >= 0 &&
+            parseInt($("#train-min").val()) < 60 &&
+            parseInt($("#train-freq").val()) > 0 &&
+            parseInt($("#train-freq").val()) < 1440) {
 
-        database.ref().push({
-            newName: trainName,
-            newDesti: trainDesti,
-            newFreq: trainFreq,
-            newStart: trainStart,
-        });
+            var trainName = $("#train-name").val().trim();
+            var trainDesti = $("#train-desti").val().trim();
+            var trainFreq = $("#train-freq").val().trim();
+            var trainStart = $("#train-hour").val().trim() + ":" + $("#train-min").val().trim() + " " + $("#train-ampm").val();
 
-        $(".form-control").val("");
-        // why not work with empty?
-        // $(".form-control").empty();
+            database.ref().push({
+                newName: trainName,
+                newDesti: trainDesti,
+                newFreq: trainFreq,
+                newStart: trainStart,
+            });
+
+            $(".form-control").val("");
+            $("#train-ampm").val("AM");
+            // why not work with empty?
+            // $(".form-control").empty();
+        } else {
+            alert("Please type valid number in box")
+        }
     } else {
         alert("Please finish the train information before submit");
     }
@@ -73,17 +82,13 @@ database.ref().on("child_added", function (childSnapshot) {
     var trainMinDiff = moment().diff(trainStartBackday, "minutes")
     console.log(trainMinDiff)
 
-    // the remainder is the last train have runned minutes until now.
-    var trainLastMins = trainMinDiff % trainFreqfire
-    console.log(trainLastMins)
-
     // minutes away for next train = frequency(total minutes) - remainder(last train have runned minutes)
-    var trainNextMins = trainFreqfire - trainLastMins
+    var trainNextMins = trainFreqfire - trainMinDiff % trainFreqfire
     console.log(trainNextMins)
 
     // time when next train arrivaled = now time + minutes away for next train
     var trainArrivalMins = moment().add(trainNextMins, "minutes")
-    var trainArrivalTime = moment(trainArrivalMins).format("LT")
+    var trainArrivalTime = trainArrivalMins.format("LT")
     console.log(trainArrivalMins)
     console.log(trainArrivalTime)
 
@@ -106,6 +111,8 @@ database.ref().on("child_added", function (childSnapshot) {
 
     $(document).on("click", "#remove-button", function () {
         database.ref().child($(this).attr("data-key")).remove();
-        window.location.reload();
+        $(this).parentsUntil("tbody").remove();
+        // $(this).parent().parent().remove();
+        // $(this).closest ("tr").remove();
     })
 })
