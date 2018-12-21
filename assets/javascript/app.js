@@ -59,7 +59,7 @@ $("#submit-button").on("click", function () {
             // why not work with empty?
             // $(".form-control").empty();
         } else {
-            alert("Please type valid number in box")
+            alert("Please type valid numbers in box")
         }
     } else {
         alert("Please finish the train information before submit");
@@ -120,6 +120,6 @@ $(document).on("click", "#remove-button", function () {
         $(this).parentsUntil("tbody").remove();
         alert("The train has been removed.");
     } else {
-        alert("Sorry, wrong password.");
+        alert("The password is invalid.");
     }
 })

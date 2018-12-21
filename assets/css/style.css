@@ -16,9 +16,16 @@ body {
 
 #jumbonav{
     border-radius: 6px;
-    opacity: .7;
-    padding-bottom: 25px;
+    opacity: .8;
+    padding: 20px;
+    text-align: center;
 }
+
+.clock{
+    padding: 2%;
+    height: 120px;
+}
+
 
 /* left */
 .card-header .fa {
