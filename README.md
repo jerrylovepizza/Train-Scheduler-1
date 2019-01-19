@@ -20,3 +20,6 @@ This train schedule application incorporates Firebase to host arrival and depart
 
 ## :construction:Author:
 * [Isaac Wu](https://github.com/squall2046)
+
+## Bonus 
+* Added `remove` buttons for each train.
