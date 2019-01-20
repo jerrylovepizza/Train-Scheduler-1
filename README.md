@@ -1,5 +1,6 @@
 # :train:Train-Scheduler
-Plan your next meal and drink by searching for great recipes. https://squall2046.github.io/Meal-Drink/
+Plan your next meal and drink by searching for great recipes. 
+[Game Link](https://squall2046.github.io/Train-Scheduler/)
 ## :construction:Synopsis:
 This train schedule application incorporates Firebase to host arrival and departure data. It will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
 
@@ -20,6 +21,8 @@ This train schedule application incorporates Firebase to host arrival and depart
 
 ## :construction:Author:
 * [Isaac Wu](https://github.com/squall2046)
+* [Game Repo](https://github.com/squall2046/Train-Scheduler)
+
 
 ## Bonus 
 * Added `remove` buttons for each train.
