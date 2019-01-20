@@ -6,7 +6,7 @@ Schedule and track your next train by Train-Scheduler.
 ## :construction:Synopsis:
 This train schedule application incorporates Firebase to host arrival and departure data. It will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
 
-![Game Sample](/assets/images/readme-train.gif)
+![App Sample](/assets/images/readme-train.gif)
 
   * For adding trains, user need to submit the following information in left dropdown input blanks:
     * Train Name
