@@ -1,9 +1,10 @@
 # :train:Train-Scheduler
 Schedule and track your next train by Train-Scheduler.
 
+> Here is the [Game Link](https://squall2046.github.io/Train-Scheduler/)
+
 ![Game Sample](/assets/images/readme-train.gif)
 
-> Here is the [Game Link](https://squall2046.github.io/Train-Scheduler/)
 ## :construction:Synopsis:
 This train schedule application incorporates Firebase to host arrival and departure data. It will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
 
