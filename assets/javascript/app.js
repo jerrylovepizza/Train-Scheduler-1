@@ -114,12 +114,11 @@ database.ref().on("child_added", function (childSnapshot) {
 
 $(document).on("click", "#remove-button", function () {
     var trainConfirm = prompt("Please enter the PIN to remove the train:")
-    if (trainConfirm === "isaac") {
-
+    // if (trainConfirm === "isaac") {
         database.ref().child($(this).attr("data-key")).remove();
         $(this).parentsUntil("tbody").remove();
-        alert("The train has been removed.");
-    } else {
-        alert("The password is invalid.");
-    }
+    //     alert("The train has been removed.");
+    // } else {
+    //     alert("The password is invalid.");
+    // }
 })
